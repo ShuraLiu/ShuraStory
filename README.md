@@ -1,2 +1,2 @@
-ShuraStory
-==========
+mygame
+======

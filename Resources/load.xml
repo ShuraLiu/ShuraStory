@@ -1,0 +1,52 @@
+<texture file_name="game_1.pvr.ccz" pixel_format="RGBA4444"/>
+<!-- <texture file_name="ui_2.pvr.ccz" pixel_format="RGBA4444"/>
+<texture file_name="ui_3.pvr.ccz" pixel_format="RGBA4444"/>
+<texture file_name="ui_5.pvr.ccz" pixel_format="RGBA4444"/>
+<texture file_name="ui_8.pvr.ccz" pixel_format="RGBA4444"/>
+<texture file_name="ui_9.pvr.ccz" pixel_format="RGBA4444"/>
+<texture file_name="font_0.png" pixel_format="RGBA4444"/>
+<texture file_name="font_1.png" pixel_format="RGBA4444"/>
+<texture file_name="font_2.png" pixel_format="RGBA4444"/>
+<texture file_name="font_6.png" pixel_format="RGBA4444"/>
+<texture file_name="font_7.png" pixel_format="RGBA4444"/>
+<texture file_name="font_8.png" pixel_format="RGBA4444"/>
+<texture file_name="font_9.png" pixel_format="RGBA4444"/>
+<texture file_name="font_10.png" pixel_format="RGBA4444"/>
+<texture file_name="font_11.png" pixel_format="RGBA4444"/>
+<texture file_name="font_12.png" pixel_format="RGBA4444"/>
+<texture file_name="font_13.png" pixel_format="RGBA4444"/>
+<texture file_name="font_16.png" pixel_format="RGBA4444"/>
+<texture file_name="font_20.png" pixel_format="RGBA4444"/> -->
+
+<sprite_frame file_name="game_1.plist" />
+<animation file_name="animations.plist" />
+<!-- <sprite_frame file_name="ui_2.plist" />
+<sprite_frame file_name="ui_3.plist" />
+<sprite_frame file_name="ui_5.plist" />
+<sprite_frame file_name="ui_8.plist" />
+<sprite_frame file_name="ui_9.plist" /> -->
+
+<!-- <font file_name="font_0.fnt"/>
+<font file_name="font_1.fnt"/>
+<font file_name="font_2.fnt"/>
+<font file_name="font_6.fnt"/>
+<font file_name="font_7.fnt"/>
+<font file_name="font_8.fnt"/>
+<font file_name="font_9.fnt"/>
+<font file_name="font_10.fnt"/>
+<font file_name="font_11.fnt"/>
+<font file_name="font_12.fnt"/>
+<font file_name="font_13.fnt"/>
+<font file_name="font_16.fnt"/>
+<font file_name="font_20.fnt"/>
+
+<effect file_name="effect_buy_coin_success.mp3"/>
+<effect file_name="effect_buy_item_success.mp3"/>
+<effect file_name="effect_buy_ruby_success.mp3"/>
+<effect file_name="effect_click_back.mp3"/>
+<effect file_name="effect_click_normal.mp3"/>
+<effect file_name="effect_click_send_play_count.mp3"/>
+<effect file_name="effect_level_up.mp3"/>
+<effect file_name="effect_start_game.mp3"/>
+
+<particle file_name="particle_level_up.plist"/> -->
