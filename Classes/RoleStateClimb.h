@@ -9,18 +9,16 @@
 #ifndef __mygame__RoleStateClimb__
 #define __mygame__RoleStateClimb__
 
-#include "RoleState.h"
+#include "BaseState.h"
 
 class Role;
 
 class RoleStateClimb
-: public RoleState
+: public BaseState
 {
 public:
     virtual void enter();
     virtual void exit();
-    virtual void init();
-    virtual void update(float delta);
     
 public:
     explicit RoleStateClimb(Role* pRole);

@@ -9,18 +9,16 @@
 #ifndef __mygame__AIStateAttack__
 #define __mygame__AIStateAttack__
 
-#include "RoleState.h"
+#include "BaseState.h"
 
 class AI;
 
 class AIStateAttack
-: public RoleState
+: public BaseState
 {
 public:
     virtual void enter();
     virtual void exit();
-    virtual void init();
-    virtual void update(float delta);
     
 public:
     explicit AIStateAttack(AI* pAI);

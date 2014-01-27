@@ -5,7 +5,7 @@
 
 struct Resource
 {
-    cocos2d::CCSize size;
+    cocos2d::Size size;
     const char* directory;
     
     Resource()
@@ -14,7 +14,7 @@ struct Resource
         size.width = 0;
         size.height = 0;
     }
-    Resource(const cocos2d::CCSize& s, const char* dir)
+    Resource(const cocos2d::Size& s, const char* dir)
     : size(s)
     , directory(dir)
     {

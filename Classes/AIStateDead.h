@@ -9,18 +9,16 @@
 #ifndef __mygame__AIStateDead__
 #define __mygame__AIStateDead__
 
-#include "RoleState.h"
+#include "BaseState.h"
 
 class AI;
 
 class AIStateDead
-: public RoleState
+: public BaseState
 {
 public:
     virtual void enter();
     virtual void exit();
-    virtual void init();
-    virtual void update(float delta);
     
 public:
     explicit AIStateDead(AI* pAI);

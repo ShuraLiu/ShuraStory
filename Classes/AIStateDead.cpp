@@ -10,13 +10,15 @@
 #include "AI.h"
 #include "cocos2d.h"
 #include "GameContext.h"
+#include "SimpleAudioEngine.h"
+using namespace CocosDenshion;
 
 USING_NS_CC;
 
 AIStateDead::AIStateDead(AI* pAI)
 : pAI_(pAI)
 {
-    init();
+
 }
 
 AIStateDead::~AIStateDead()
@@ -26,20 +28,13 @@ AIStateDead::~AIStateDead()
 
 void AIStateDead::enter()
 {
+    SimpleAudioEngine::getInstance()->playEffect("effect_ai_dead.mp3");
+    pAI_->getAIStateCurrent()->exit();
     pAI_->getAISprite()->runAction(pAI_->getActions().at(AI::ACTION_DEAD));
+    pAI_->setAIStateCurrent(this);
 }
 
 void AIStateDead::exit()
-{
-    
-}
-
-void AIStateDead::init()
-{
-    
-}
-
-void AIStateDead::update(float delta)
 {
     
 }

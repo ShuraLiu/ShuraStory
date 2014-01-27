@@ -16,7 +16,7 @@ USING_NS_CC;
 AIStateIdle::AIStateIdle(AI* pAI)
 : pAI_(pAI)
 {
-    init();
+
 }
 
 AIStateIdle::~AIStateIdle()
@@ -26,20 +26,13 @@ AIStateIdle::~AIStateIdle()
 
 void AIStateIdle::enter()
 {
+    pAI_->getAIStateCurrent()->exit();
+    pAI_->setCurrentIdleDuration(0);
     pAI_->getAISprite()->runAction(pAI_->getActions().at(AI::ACTION_IDLE));
+    pAI_->setAIStateCurrent(this);
 }
 
 void AIStateIdle::exit()
-{
-    
-}
-
-void AIStateIdle::init()
-{
-    
-}
-
-void AIStateIdle::update(float delta)
 {
     
 }

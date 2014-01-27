@@ -16,7 +16,7 @@ USING_NS_CC;
 AIStateAttack::AIStateAttack(AI* pAI)
 : pAI_(pAI)
 {
-    init();
+
 }
 
 AIStateAttack::~AIStateAttack()
@@ -26,20 +26,12 @@ AIStateAttack::~AIStateAttack()
 
 void AIStateAttack::enter()
 {
+    pAI_->getAIStateCurrent()->exit();
     pAI_->getAISprite()->runAction(pAI_->getActions().at(AI::ACTION_ATTACK));
+    pAI_->setAIStateCurrent(this);
 }
 
 void AIStateAttack::exit()
-{
-    
-}
-
-void AIStateAttack::init()
-{
-    
-}
-
-void AIStateAttack::update(float delta)
 {
     
 }

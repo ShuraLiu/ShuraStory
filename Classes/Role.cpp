@@ -12,6 +12,8 @@
 #include "RoleStatePreClimb.h"
 #include "RoleStateClimb.h"
 #include "RoleStateAttack.h"
+#include "RoleStateDead.h"
+#include "RoleStateVictory.h"
 #include "config.h"
 #include "Ladder.h"
 #include "ActorProperty.h"
@@ -27,6 +29,8 @@ Role::Role(ActorProperty* property, const cocos2d::Point& initialPosition, const
 , pRoleStatePreClimb_(new RoleStatePreClimb(this))
 , pRoleStateClimb_(new RoleStateClimb(this))
 , pRoleStateAttack_(new RoleStateAttack(this))
+, pRoleStateDead_(new RoleStateDead(this))
+, pRoleStateVictory_(new RoleStateVictory(this))
 , pCurrentState_(0)
 , pRoleSprite_(0)
 , speedClimb_(0)
@@ -41,6 +45,13 @@ Role::Role(ActorProperty* property, const cocos2d::Point& initialPosition, const
 
 Role::~Role()
 {
+    delete pRoleStateIdle_;
+    delete pRoleStateMove_;
+    delete pRoleStatePreClimb_;
+    delete pRoleStateClimb_;
+    delete pRoleStateAttack_;
+    delete pRoleStateDead_;
+    delete pRoleStateVictory_;
     CC_SAFE_RELEASE_NULL(pRoleSprite_);
     ActionArray::iterator it = actions_.begin();
     ActionArray::iterator end = actions_.end();
@@ -73,6 +84,14 @@ void Role::init(const cocos2d::Point& initialPosition, const std::string& direct
     actions_.at(ACTION_ATTACK) = attack;
     attack->setTag(ROLE_ATTACK_TAG);
     CC_SAFE_RETAIN(attack);
+    Animate* dead = Animate::create(AnimationCache::getInstance()->getAnimation(property_->action_dead.c_str()));
+    actions_.at(ACTION_DEAD) = dead;
+    dead->setTag(ROLE_DEAD_TAG);
+    CC_SAFE_RETAIN(dead);
+    Animate* victory = Animate::create(AnimationCache::getInstance()->getAnimation(property_->action_victory.c_str()));
+    actions_.at(ACTION_VICTORY) = victory;
+    victory->setTag(ROLE_VICTORY_TAG);
+    CC_SAFE_RETAIN(victory);
     
     if (0 == std::strcmp(direction.c_str(), "left"))
     {
@@ -82,11 +101,23 @@ void Role::init(const cocos2d::Point& initialPosition, const std::string& direct
     {
         direction_ = RIGHT;
     }
-    
+
     if (0 != std::strcmp(direction.c_str(), property_->direction.c_str()))
     {
         pRoleSprite_->setFlippedX(true);
     }
+    
+    if (changeState(ROLE_STATE_IDLE))
+    {
+        pRoleStateIdle_->enter();
+    }
+}
+
+void Role::reset(const cocos2d::Point &initialPosition, const std::string &direction)
+{
+    setPosition(initialPosition);
+    
+   switchDirection((0 == std::strcmp(direction.c_str(), "left") ? LEFT : RIGHT));
     
     if (changeState(ROLE_STATE_IDLE))
     {
@@ -153,6 +184,14 @@ void Role::update(float delta)
             }
         }
             break;
+        case ROLE_STATE_DEAD:
+        {
+            if (!pRoleSprite_->getActionByTag(ROLE_DEAD_TAG))
+            {
+                GameContext::getInstance().gameOver();
+            }
+        }
+            break;
         default:
             break;
     }
@@ -213,7 +252,10 @@ bool Role::changeState(ROLE_STATE state)
 {
     if (mState_ == ROLE_STATE_DEAD)
     {
-        return  false;
+        if (state != ROLE_STATE_IDLE)
+        {
+            return  false;
+        }
     }
     if (state == ROLE_STATE_MOVE)
     {
@@ -293,11 +335,44 @@ void Role::notReadyToAttack()
 void Role::onMenuAttack(cocos2d::Object *obj)
 {
     attack();
-    GameContext::getInstance().getAICanAttack()->dead();
+    if (GameContext::getInstance().getAICanAttack())
+    {
+        GameContext::getInstance().getAICanAttack()->dead();
+    }
+    if (GameContext::getInstance().getBossCanAttack())
+    {
+        GameContext::getInstance().showBossItem();
+        GameContext::getInstance().getBossCanAttack()->dead();
+    }
+    GameContext::getInstance().addKillCount(1);
 }
 
 void Role::runAction(Role::Action action)
 {
     pRoleSprite_->runAction(actions_.at(action));
     currentAction_ = action;
+}
+
+void Role::dead()
+{
+    if (changeState(ROLE_STATE_DEAD))
+    {
+        pRoleStateDead_->enter();
+    }
+}
+
+void Role::victory()
+{
+    if (changeState(ROLE_STATE_VICTORY)) {
+        pRoleStateVictory_->enter();
+    }
+}
+
+bool Role::victoryAnimationFinished() const
+{
+    if (mState_ == ROLE_STATE_VICTORY && !pRoleSprite_->getActionByTag(ROLE_VICTORY_TAG))
+    {
+        return true;
+    }
+    return false;
 }

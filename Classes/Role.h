@@ -12,7 +12,7 @@
 #include "cocos2d.h"
 #include "Actor.h"
 
-class RoleState;
+class BaseState;
 class Ladder;
 class ActorProperty;
 
@@ -26,6 +26,7 @@ enum ROLE_STATE
     ROLE_STATE_ATTACK,
     ROLE_STATE_ATTACKED,
     ROLE_STATE_DEAD,
+    ROLE_STATE_VICTORY,
 };
 
 class Role
@@ -42,6 +43,8 @@ public:
     void attack();
     void readyToAttack();
     void notReadyToAttack();
+    void dead();
+    void victory();
     
 public:
     enum Action
@@ -50,8 +53,8 @@ public:
         ACTION_MOVE,
         ACTION_CLIMB,
         ACTION_ATTACK,
-        ACTION_ATTACKED,
         ACTION_DEAD,
+        ACTION_VICTORY,
         ACTION_COUNT,
     };
     
@@ -59,6 +62,7 @@ public:
     void init(const cocos2d::Point& initialPosition, const std::string& direction);
     void update(float delta);
     void runAction(Action action);
+    void reset(const cocos2d::Point& initialPosition, const std::string& direction);
 
 public:
     Role(ActorProperty* property, const cocos2d::Point& initialPosition, const std::string& direction);
@@ -91,27 +95,27 @@ public:
         return actions_;
     }
     
-    RoleState* getRoleStateIdle() const
+    BaseState* getRoleStateIdle() const
     {
         return pRoleStateIdle_;
     }
     
-    RoleState* getRoleStateMove() const
+    BaseState* getRoleStateMove() const
     {
         return pRoleStateMove_;
     }
     
-    RoleState* getRoleStateAttack() const
+    BaseState* getRoleStateAttack() const
     {
         return pRoleStateAttack_;
     }
     
-    RoleState* getRoleStateAttacked() const
+    BaseState* getRoleStateAttacked() const
     {
         return pRoleStateAttacked_;
     }
     
-    RoleState* getRoleStateDead() const
+    BaseState* getRoleStateDead() const
     {
         return pRoleStateDead_;
     }
@@ -133,6 +137,8 @@ public:
     
     cocos2d::Rect getAttackRect();
     
+    bool victoryAnimationFinished() const;
+    
 private:
     bool changeState(ROLE_STATE state);
     void switchDirection(Direction direction);
@@ -141,14 +147,15 @@ private:
     
 private:
     ActorProperty* property_;
-    RoleState* pRoleStateIdle_;
-    RoleState* pRoleStateMove_;
-    RoleState* pRoleStatePreClimb_;
-    RoleState* pRoleStateClimb_;
-    RoleState* pRoleStateAttack_;
-    RoleState* pRoleStateAttacked_;
-    RoleState* pRoleStateDead_;
-    RoleState* pCurrentState_;
+    BaseState* pRoleStateIdle_;
+    BaseState* pRoleStateMove_;
+    BaseState* pRoleStatePreClimb_;
+    BaseState* pRoleStateClimb_;
+    BaseState* pRoleStateAttack_;
+    BaseState* pRoleStateAttacked_;
+    BaseState* pRoleStateDead_;
+    BaseState* pRoleStateVictory_;
+    BaseState* pCurrentState_;
     
     ROLE_STATE mState_;
     ROLE_STATE mPrevState_;

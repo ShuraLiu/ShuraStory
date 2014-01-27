@@ -9,18 +9,16 @@
 #ifndef __mygame__AIStateMove__
 #define __mygame__AIStateMove__
 
-#include "RoleState.h"
+#include "BaseState.h"
 
 class AI;
 
 class AIStateMove
-: public RoleState
+: public BaseState
 {
 public:
     virtual void enter();
     virtual void exit();
-    virtual void init();
-    virtual void update(float delta);
     
 public:
     explicit AIStateMove(AI* pAI);

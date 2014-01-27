@@ -9,14 +9,15 @@
 #include "RoleStateAttack.h"
 #include "Role.h"
 #include "cocos2d.h"
-#include "config.h"
+#include "SimpleAudioEngine.h"
+using namespace CocosDenshion;
 
 USING_NS_CC;
 
 RoleStateAttack::RoleStateAttack(Role* pRole)
 : pRole_(pRole)
 {
-    init();
+
 }
 
 RoleStateAttack::~RoleStateAttack()
@@ -26,21 +27,11 @@ RoleStateAttack::~RoleStateAttack()
 
 void RoleStateAttack::enter()
 {
+    SimpleAudioEngine::getInstance()->playEffect("effect_role_attack.mp3");
     pRole_->runAction(Role::ACTION_ATTACK);
-//    pRole_->getRoleSprite()->runAction(pRole_->getActions().at(Role::ACTION_ATTACK));
 }
 
 void RoleStateAttack::exit()
-{
-    
-}
-
-void RoleStateAttack::init()
-{
-    
-}
-
-void RoleStateAttack::update(float delta)
 {
     
 }

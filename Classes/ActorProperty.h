@@ -23,6 +23,8 @@ public:
     std::string action_attacked;
     std::string action_climb;
     std::string action_dead;
+    std::string action_victory;
+    std::string action_notbeat;
     
     Rect bodyRect;
     Rect leftAttackRect;

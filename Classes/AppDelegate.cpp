@@ -1,7 +1,7 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
-#include "Game.h"
 #include "DeviceResolution.h"
+#include "Game.h"
 
 USING_NS_CC;
 
@@ -21,20 +21,16 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setOpenGLView(eglView);
 	
     // turn on display FPS
-    director->setDisplayStats(true);
+//    director->setDisplayStats(true);
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
-    
+
     DeviceResolution::sharedDeviceResolution();
     
+    Texture2D::PVRImagesHavePremultipliedAlpha(true);
+    
     Game::getInstance().launch();
-
-    // create a scene. it's an autorelease object
-//    auto scene = HelloWorld::createScene();
-//
-//    // run
-//    director->runWithScene(scene);
 
     return true;
 }

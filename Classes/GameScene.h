@@ -43,16 +43,38 @@ public:
     virtual void onStatusChanged(GameLogic::GameStatus prevStatus, GameLogic::GameStatus status);
     virtual void onLadderCanClimb(Ladder* ladder, bool isCanUp);
     virtual void onLadderCanNotClimb(Ladder* ladder);
-    virtual void onAICanAttack();
+    virtual void onBoxCanOpen(Box* box);
+    virtual void onBoxCanPickUp(Box* box);
+    virtual void onSwitchMap(cocos2d::TMXTiledMap* map);
+    virtual void onSwitchMapProgressUpdate(float offset);
+    virtual void updateLightAndBomb(unsigned int count);
+    virtual void onBombMoved(const cocos2d::Point& add);
+    virtual void onBombExplode();
+    virtual void moveLayerUp();
+    virtual void moveLayerDown();
+    virtual void onBossItemShowed(Boss* boss);
+    virtual void onBossItemPickUped();
+    virtual void showVictoryAnimation(cocos2d::Sprite* sprite);
     
 private:
-    void onMenuClimb(cocos2d::Object* obj);
+//    void onMenuClimb(cocos2d::Object* obj);
     void onMenuAttack(cocos2d::Object* obj);
+    void onMoveLayerFinished();
+    
+    void initLightAndBomb();
+    void onBombExplodeFinished();
     
 private:
     GameLogic logic_;
     PlayLayer* pLayerControl_;
     cocos2d::Layer* pLayerGame_;
+    cocos2d::Layer* pLayerBomb_;
+    cocos2d::Sprite* pSpriteLight0_;
+    cocos2d::Sprite* pSpriteLight1_;
+    cocos2d::Sprite* pSpriteLight2_;
+    cocos2d::Sprite* pSpriteBomb_;
+    cocos2d::Sprite* pSpriteBombExplode_;
+    cocos2d::LabelTTF* pLabelBombCount_;
 };
 
 class GameSceneLoader : public cocosbuilder::LayerLoader

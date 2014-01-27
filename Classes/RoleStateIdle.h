@@ -1,26 +1,24 @@
 //
 //  RoleStateIdle.h
-//  mygame
+//  ShuraStory
 //
-//  Created by 刘 潇逸 on 14-1-21.
+//  Created by 刘 潇逸 on 14-1-24.
 //
 //
 
-#ifndef __mygame__RoleStateIdle__
-#define __mygame__RoleStateIdle__
+#ifndef __ShuraStory__RoleStateIdle__
+#define __ShuraStory__RoleStateIdle__
 
-#include "RoleState.h"
+#include "BaseState.h"
 
 class Role;
 
 class RoleStateIdle
-: public RoleState
+: public BaseState
 {
 public:
     virtual void enter();
     virtual void exit();
-    virtual void init();
-    virtual void update(float delta);
     
 public:
     explicit RoleStateIdle(Role* pRole);
@@ -30,4 +28,4 @@ private:
     Role* pRole_;
 };
 
-#endif /* defined(__mygame__RoleStateIdle__) */
+#endif /* defined(__ShuraStory__RoleStateIdle__) */

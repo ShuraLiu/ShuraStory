@@ -10,12 +10,24 @@
 #define __mygame__Game__
 
 class GameSceneController;
+class LoadingSceneController;
+class HomeSceneController;
+class GameOverSceneController;
+
+enum SwitchActivityParam{
+    LOADING_FINISHED,
+    READY_TO_PLAY,
+    GAME_OVER,
+};
 
 class Game
 {
 private:
     bool running_;
     GameSceneController* pGameSceneController_;
+    LoadingSceneController* pLoadingSceneController_;
+    HomeSceneController* pHomeSceneController_;
+    GameOverSceneController* pGameOverSceneController_;
     
 private:
     Game();
@@ -36,6 +48,8 @@ public:
     void shutdown();
     
     bool isRunning() const;
+    
+    void switchActivity(SwitchActivityParam param);
 };
 
 #endif /* defined(__mygame__Game__) */
