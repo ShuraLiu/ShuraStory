@@ -13,11 +13,12 @@
 #include <ctime>
 #include <numeric>
 #include <cmath>
+#include <limits>
 
 namespace utils {
     bool floatEuqalCompare(float lhs, float rhs)
     {
-        return fabs(lhs-rhs) <= __FLT_EPSILON__;//std::numeric_limits<float>::epsilon();
+		return fabs(lhs - rhs) <= std::numeric_limits<float>::epsilon();//__FLT_EPSILON__;//std::numeric_limits<float>::epsilon();
     }
     
     bool floatGreaterEuqalCompare(float lhs, float rhs)

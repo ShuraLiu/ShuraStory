@@ -45,29 +45,31 @@ void GameScene::onEnter()
     pLayerControl_->setGameLogic(&logic_);
     scheduleUpdate();
     
-    ClippingNode* pClip=ClippingNode::create();
-    pClip->setContentSize(getContentSize());
-    addChild(pClip);
-    //加入灰色的底板
-    LayerColor* pColor= LayerColor::create(Color4B(0, 0, 0, 255));
-    pClip->addChild(pColor);
-    
-    DrawNode *m_pAA=DrawNode::create();
-    static Color4F green = {0, 1, 0, 1};
-    Size size = pLayerGame_->getContentSize();
-    Point pos = pLayerGame_->getPosition();
-    static Point rect[4]=
-    {
-        Point(-size.width / 2, size.height / 2),
-        Point(size.width / 2, size.height / 2),
-        Point(size.width / 2,-size.height / 2),
-        Point(-size.width / 2,-size.height / 2)
-    };
-    m_pAA->drawPolygon(rect, 4, green, 0, green);
-    m_pAA->setPosition(Point(getContentSize().width/2, getContentSize().height/2));
-    //设置为pclip的模板
-    pClip->setStencil(m_pAA);
-    pClip->setInverted(true);
+ //   ClippingNode* pClip=ClippingNode::create();
+ //   pClip->setContentSize(getContentSize());
+ //  
+ //   //加入灰色的底板
+	///*LayerColor* pColor = LayerColor::create(Color4B(0, 0, 0, 255));*/
+	//Layer* pColor = Layer::create();
+ //   pClip->addChild(pColor);
+ //   
+ //   DrawNode *m_pAA=DrawNode::create();
+ //   static Color4F green = {0, 1, 0, 1};
+ //   Size size = pLayerGame_->getContentSize();
+ //   Point pos = pLayerGame_->getPosition();
+ //   static Point rect[4]=
+ //   {
+ //       Point(-size.width / 2, size.height / 2),
+ //       Point(size.width / 2, size.height / 2),
+ //       Point(size.width / 2,-size.height / 2),
+ //       Point(-size.width / 2,-size.height / 2)
+ //   };
+ //   m_pAA->drawPolygon(rect, 4, green, 0, green);
+ //   m_pAA->setPosition(Point(getContentSize().width/2, getContentSize().height/2));
+ //   //设置为pclip的模板
+ //   pClip->setStencil(m_pAA);
+ //   pClip->setInverted(true);
+	//addChild(pClip);
 }
 
 void GameScene::update(float delta)

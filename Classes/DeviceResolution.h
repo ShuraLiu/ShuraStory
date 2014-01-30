@@ -34,6 +34,8 @@ public:
         ANDROID_MDPI,
         ANDROID_HDPI,
         ANDROID_XHDPI,
+
+		WIN_32,
     };
     
 private:

@@ -26,6 +26,8 @@ GameLogic::GameLogic(IObserver& observer)
 , changeY_(false)
 , repeat_(0)
 , sprite_(0)
+, move_(false)
+, bombMove_(false)
 {
     
 }

@@ -11,7 +11,7 @@
 #include "cocosbuilder/CocosBuilder.h"
 
 USING_NS_CC;
-USING_NS_CC_EXT;
+
 using namespace cocosbuilder;
 
 SceneController* SceneController::s_pCurrentController_ = 0;
