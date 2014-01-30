@@ -1,0 +1,380 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="win32">
+      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes">
+      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="win">
+      <UniqueIdentifier>{af41b9ed-5206-4a59-b85d-8c496ee6fb04}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Actor.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ActorFactory.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ActorProperty.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AI.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AIAutoLogic.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AIAutoLogic0.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AIStateAttack.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AIStateDead.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AIStateIdle.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AIStateInitial.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AIStateMove.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AIStateRevival.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BaseState.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Boss.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BossStateAttack.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BossStateDead.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BossStateIdle.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BossStateMove.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BossStateNotMove.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BossStateRevival.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BossStateUnbeatable.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Box.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BoxStateBomb.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BoxStateIdle.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BoxStateOpening.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BoxStatePickUp.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BoxStateReadyToOpen.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\DeviceResolution.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameContext.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameLogic.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameOverScene.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameOverSceneController.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameScene.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameSceneController.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HomeScene.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HomeSceneController.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Ladder.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\LoadingScene.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\LoadingSceneController.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\LoadLogic.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PlayLayer.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PreloadList.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Role.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\RoleStateAttack.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\RoleStateClimb.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\RoleStateDead.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\RoleStateIdle.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\RoleStateMove.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\RoleStatePreClimb.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\RoleStateVictory.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SceneController.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SceneObject.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Utils.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Wall.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\win\DeviceResolutionWin32.cpp">
+      <Filter>win</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HelloWorldScene.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Actor.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ActorFactory.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ActorProperty.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AI.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AIAutoLogic.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AIAutoLogic0.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AIStateAttack.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AIStateDead.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AIStateIdle.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AIStateInitial.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AIStateMove.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AIStateRevival.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BaseState.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Boss.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BossStateAttack.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BossStateDead.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BossStateIdle.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BossStateMove.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BossStateNotMove.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BossStateRevival.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BossStateUnbeatable.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Box.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BoxStateBomb.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BoxStateIdle.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BoxStateOpening.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BoxStatePickUp.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BoxStateReadyToOpen.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\config.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\DeviceResolution.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameContext.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameLogic.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameOverScene.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameOverSceneController.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameScene.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameSceneController.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HomeScene.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HomeSceneController.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Ladder.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\LoadingScene.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\LoadingSceneController.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\LoadLogic.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PlayLayer.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PreloadList.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Role.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\RoleStateAttack.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\RoleStateClimb.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\RoleStateDead.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\RoleStateIdle.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\RoleStateMove.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\RoleStatePreClimb.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\RoleStateVictory.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SceneController.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SceneObject.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Utils.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Wall.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="game.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
