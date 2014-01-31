@@ -62,6 +62,7 @@ public:
     void update(float delta);
     bool changeState(AI_STATE state);
 	bool isAttacked(const cocos2d::Rect& attackRect);
+	bool readyToAttack(const cocos2d::Rect& targetRect);
 
 	virtual bool canBeAttack();
     

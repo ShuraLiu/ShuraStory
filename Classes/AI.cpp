@@ -333,3 +333,16 @@ bool AI::canBeAttack()
 	return canBeAttack_;
 }
 
+bool AI::readyToAttack(const Rect& targetRect)
+{
+	if (mState_ != AI_STATE_ATTACK  && mState_ != AI_STATE_DEAD && mState_ != AI_STATE_REVIVAL
+		&& getAttackRect().intersectsRect(targetRect))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+

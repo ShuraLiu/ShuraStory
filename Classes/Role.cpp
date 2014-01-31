@@ -32,7 +32,6 @@ Role::Role(ActorProperty* property, const cocos2d::Point& initialPosition, const
 , pRoleStateDead_(new RoleStateDead(this))
 , pRoleStateVictory_(new RoleStateVictory(this))
 , pCurrentState_(0)
-, pRoleSprite_(0)
 , speedClimb_(0)
 , speedMove_(0)
 , mState_(ROLE_STATE_NONE)
@@ -52,7 +51,6 @@ Role::~Role()
     delete pRoleStateAttack_;
     delete pRoleStateDead_;
     delete pRoleStateVictory_;
-    CC_SAFE_RELEASE_NULL(pRoleSprite_);
     ActionArray::iterator it = actions_.begin();
     ActionArray::iterator end = actions_.end();
     for (; it != end; ++it)
@@ -66,10 +64,9 @@ Role::~Role()
 
 void Role::init(const cocos2d::Point& initialPosition, const std::string& direction)
 {
-    pRoleSprite_ = Sprite::create();
-    pRoleSprite_->setAnchorPoint(Point::ZERO);
+	Sprite* pRoleSprite = getActorSprite();
+    pRoleSprite->setAnchorPoint(Point::ZERO);
     setPosition(initialPosition);
-    CC_SAFE_RETAIN(pRoleSprite_);
     speedMove_ = ROLE_MOVE_SPEED;
     speedClimb_ = ROLE_CLIMB_SPEED;
     
@@ -104,7 +101,7 @@ void Role::init(const cocos2d::Point& initialPosition, const std::string& direct
 
     if (0 != std::strcmp(direction.c_str(), property_->direction.c_str()))
     {
-        pRoleSprite_->setFlippedX(true);
+        pRoleSprite->setFlippedX(true);
     }
     
     if (changeState(ROLE_STATE_IDLE))
@@ -130,26 +127,28 @@ void Role::update(float delta)
     switch (mState_) {
         case ROLE_STATE_MOVE:
         {
-            float currentX = pRoleSprite_->getPositionX();
+			Sprite* pRoleSprite = getActorSprite();
+            float currentX = pRoleSprite->getPositionX();
             float nextX = currentX + delta * speedMove_ * (positionToMove_.x > currentX ? 1 : -1);
             if ((currentX - positionToMove_.x) * (nextX - positionToMove_.x) < 0)
             {
-                pRoleSprite_->setPositionX(positionToMove_.x);
+                pRoleSprite->setPositionX(positionToMove_.x);
                 stop();
             }
             else
             {
-                pRoleSprite_->setPositionX(nextX);
+                pRoleSprite->setPositionX(nextX);
             }
         }
             break;
         case ROLE_STATE_PRE_CLIMB:
         {
-            float currentX = pRoleSprite_->getPositionX();
+			Sprite* pRoleSprite = getActorSprite();
+            float currentX = pRoleSprite->getPositionX();
             float nextX = currentX + delta * speedMove_ * (positionBeforeClimb_.x > currentX ? 1 : -1);
             if ((currentX - positionBeforeClimb_.x) * (nextX - positionBeforeClimb_.x) < 0)
             {
-                pRoleSprite_->setPositionX(positionBeforeClimb_.x);
+                pRoleSprite->setPositionX(positionBeforeClimb_.x);
                 if (changeState(ROLE_STATE_CLIMB))
                 {
                     pRoleStateClimb_->enter();
@@ -157,28 +156,30 @@ void Role::update(float delta)
             }
             else
             {
-                pRoleSprite_->setPositionX(nextX);
+                pRoleSprite->setPositionX(nextX);
             }
         }
             break;
         case ROLE_STATE_CLIMB:
-        {
-            float currentY = pRoleSprite_->getPositionY();
+		{
+			Sprite* pRoleSprite = getActorSprite();
+            float currentY = pRoleSprite->getPositionY();
             float nextY = currentY + delta * speedClimb_ * (positionAfterClimb_.y > currentY ? 1 : -1);
             if ((currentY - positionAfterClimb_.y) * (nextY - positionAfterClimb_.y) < 0)
             {
-                pRoleSprite_->setPositionY(positionAfterClimb_.y);
+                pRoleSprite->setPositionY(positionAfterClimb_.y);
                 stop();
             }
             else
             {
-                pRoleSprite_->setPositionY(nextY);
+                pRoleSprite->setPositionY(nextY);
             }
         }
             break;
         case ROLE_STATE_ATTACK:
         {
-            if (!pRoleSprite_->getActionByTag(ROLE_ATTACK_TAG))
+			Sprite* pRoleSprite = getActorSprite();
+            if (!pRoleSprite->getActionByTag(ROLE_ATTACK_TAG))
             {
                 stop();
             }
@@ -186,7 +187,8 @@ void Role::update(float delta)
             break;
         case ROLE_STATE_DEAD:
         {
-            if (!pRoleSprite_->getActionByTag(ROLE_DEAD_TAG))
+			Sprite* pRoleSprite = getActorSprite();
+            if (!pRoleSprite->getActionByTag(ROLE_DEAD_TAG))
             {
                 GameContext::getInstance().gameOver();
             }
@@ -207,13 +209,15 @@ void Role::update(float delta)
 
 void Role::setPosition(const cocos2d::Point &pos)
 {
+	Sprite* pRoleSprite = getActorSprite();
     Point position = Point(pos.x - property_->bodyRect.origin.x, pos.y - property_->bodyRect.origin.y);
-    pRoleSprite_->setPosition(position);
+    pRoleSprite->setPosition(position);
 }
 
 void Role::addRoleToLayer(cocos2d::Layer *layer)
 {
-    layer->addChild(pRoleSprite_, ROLE_Z_ORDER);
+	Sprite* pRoleSprite = getActorSprite();
+    layer->addChild(pRoleSprite, ROLE_Z_ORDER);
 }
 
 void Role::moveTo(const cocos2d::Point &pos)
@@ -223,9 +227,10 @@ void Role::moveTo(const cocos2d::Point &pos)
         const Rect& bodyRect = getBodyRect();
         if (pos.y >= bodyRect.origin.y && pos.y < bodyRect.origin.y + bodyRect.size.height * 2)
         {
-            positionToMove_.x = pos.x - (bodyRect.origin.x + bodyRect.size.width / 2) + pRoleSprite_->getPositionX();
-            positionToMove_.y = pRoleSprite_->getPositionY();
-            switchDirection(positionToMove_.x < pRoleSprite_->getPositionX() ? LEFT : RIGHT);
+			Sprite* pRoleSprite = getActorSprite();
+            positionToMove_.x = pos.x - (bodyRect.origin.x + bodyRect.size.width / 2) + pRoleSprite->getPositionX();
+            positionToMove_.y = pRoleSprite->getPositionY();
+            switchDirection(positionToMove_.x < pRoleSprite->getPositionX() ? LEFT : RIGHT);
             pRoleStateMove_->enter();
         }
     }
@@ -243,7 +248,8 @@ void Role::climb(Ladder *ladder, bool isClimbUp)
     positionAfterClimb_ = isClimbUp ? p2 : p1;
     if (changeState(ROLE_STATE_PRE_CLIMB))
     {
-        switchDirection(positionBeforeClimb_.x < pRoleSprite_->getPositionX() ? LEFT : RIGHT);
+		Sprite* pRoleSprite = getActorSprite();
+        switchDirection(positionBeforeClimb_.x < pRoleSprite->getPositionX() ? LEFT : RIGHT);
         pRoleStatePreClimb_->enter();
     }
 }
@@ -264,7 +270,8 @@ bool Role::changeState(ROLE_STATE state)
             return false;
         }
     }
-    pRoleSprite_->stopAllActions();
+	Sprite* pRoleSprite = getActorSprite();
+    pRoleSprite->stopAllActions();
     mPrevState_ = mState_;
     mState_ = state;
     return true;
@@ -281,7 +288,8 @@ void Role::stop()
 Rect Role::getCollisionBodyRect()
 {
     const Rect& bodyRect = property_->bodyRect;
-    return cocos2d::Rect(pRoleSprite_->getPositionX() + bodyRect.origin.x, pRoleSprite_->getPositionY() + bodyRect.origin.y, bodyRect.size.width, bodyRect.size.height);
+	Sprite* pRoleSprite = getActorSprite();
+    return cocos2d::Rect(pRoleSprite->getPositionX() + bodyRect.origin.x, pRoleSprite->getPositionY() + bodyRect.origin.y, bodyRect.size.width, bodyRect.size.height);
 }
 
 void Role::switchDirection(Direction direction)
@@ -289,14 +297,16 @@ void Role::switchDirection(Direction direction)
     if (direction_ != direction)
     {
         direction_ = direction;
-        pRoleSprite_->setFlippedX(!pRoleSprite_->isFlippedX());
+		Sprite* pRoleSprite = getActorSprite();
+        pRoleSprite->setFlippedX(!pRoleSprite->isFlippedX());
     }
 }
 
 Rect Role::getAttackRect()
 {
+	Sprite* pRoleSprite = getActorSprite();
     Rect rect = direction_ == RIGHT ? property_->rightAttackRect : property_->leftAttackRect;
-    return Rect(pRoleSprite_->getPositionX() + rect.origin.x, pRoleSprite_->getPositionY() + rect.origin.y, rect.size.width, rect.size.height);
+    return Rect(pRoleSprite->getPositionX() + rect.origin.x, pRoleSprite->getPositionY() + rect.origin.y, rect.size.width, rect.size.height);
 }
 
 void Role::attack()
@@ -309,7 +319,8 @@ void Role::attack()
 
 void Role::readyToAttack()
 {
-    if (!pRoleSprite_->getChildByTag(ATTACK_MENU_TAG))
+	Sprite* pRoleSprite = getActorSprite();
+    if (!pRoleSprite->getChildByTag(ATTACK_MENU_TAG))
     {
         Sprite* normalSprite = Sprite::createWithSpriteFrameName("button_role_attack.png");
         Sprite* selectedSprite = Sprite::createWithSpriteFrameName("button_role_attack.png");
@@ -319,16 +330,17 @@ void Role::readyToAttack()
         Menu* menu = Menu::create(item, NULL);
         menu->ignoreAnchorPointForPosition(false);
         menu->setAnchorPoint(Point::ZERO);
-        menu->setPosition(Point(pRoleSprite_->getContentSize().width / 2, pRoleSprite_->getContentSize().height * 3 / 2));
-        pRoleSprite_->addChild(menu, 1, ATTACK_MENU_TAG);
+        menu->setPosition(Point(pRoleSprite->getContentSize().width / 2, pRoleSprite->getContentSize().height * 3 / 2));
+        pRoleSprite->addChild(menu, 1, ATTACK_MENU_TAG);
     }
 }
 
 void Role::notReadyToAttack()
 {
-    if (pRoleSprite_->getChildByTag(ATTACK_MENU_TAG))
+	Sprite* pRoleSprite = getActorSprite();
+    if (pRoleSprite->getChildByTag(ATTACK_MENU_TAG))
     {
-        pRoleSprite_->removeChildByTag(ATTACK_MENU_TAG);
+        pRoleSprite->removeChildByTag(ATTACK_MENU_TAG);
     }
 }
                                                   
@@ -349,7 +361,8 @@ void Role::onMenuAttack(cocos2d::Object *obj)
 
 void Role::runAction(Role::Action action)
 {
-    pRoleSprite_->runAction(actions_.at(action));
+	Sprite* pRoleSprite = getActorSprite();
+    pRoleSprite->runAction(actions_.at(action));
     currentAction_ = action;
 }
 
@@ -370,7 +383,8 @@ void Role::victory()
 
 bool Role::victoryAnimationFinished() const
 {
-    if (mState_ == ROLE_STATE_VICTORY && !pRoleSprite_->getActionByTag(ROLE_VICTORY_TAG))
+	Sprite* pRoleSprite = getActorSprite();
+    if (mState_ == ROLE_STATE_VICTORY && !pRoleSprite->getActionByTag(ROLE_VICTORY_TAG))
     {
         return true;
     }

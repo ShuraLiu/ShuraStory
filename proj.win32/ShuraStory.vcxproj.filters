@@ -19,6 +19,9 @@
     <Filter Include="Classes\Actor\AI">
       <UniqueIdentifier>{94106016-7924-45a6-9640-a5c6417c139b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Actor\Role">
+      <UniqueIdentifier>{4aab7a6f-6439-457a-9c45-e30772c04b3b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -123,30 +126,6 @@
     <ClCompile Include="..\Classes\PreloadList.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Role.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\RoleStateAttack.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\RoleStateClimb.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\RoleStateDead.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\RoleStateIdle.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\RoleStateMove.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\RoleStatePreClimb.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\RoleStateVictory.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\SceneController.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
@@ -197,6 +176,30 @@
     </ClCompile>
     <ClCompile Include="..\Classes\AIStateRevival.cpp">
       <Filter>Classes\Actor\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Role.cpp">
+      <Filter>Classes\Actor\Role</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\RoleStateAttack.cpp">
+      <Filter>Classes\Actor\Role</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\RoleStateClimb.cpp">
+      <Filter>Classes\Actor\Role</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\RoleStateDead.cpp">
+      <Filter>Classes\Actor\Role</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\RoleStateIdle.cpp">
+      <Filter>Classes\Actor\Role</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\RoleStateMove.cpp">
+      <Filter>Classes\Actor\Role</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\RoleStatePreClimb.cpp">
+      <Filter>Classes\Actor\Role</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\RoleStateVictory.cpp">
+      <Filter>Classes\Actor\Role</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -305,30 +308,6 @@
     <ClInclude Include="..\Classes\PreloadList.h">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Role.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\RoleStateAttack.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\RoleStateClimb.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\RoleStateDead.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\RoleStateIdle.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\RoleStateMove.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\RoleStatePreClimb.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\RoleStateVictory.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\SceneController.h">
       <Filter>Classes</Filter>
     </ClInclude>
@@ -376,6 +355,30 @@
     </ClInclude>
     <ClInclude Include="..\Classes\AIStateRevival.h">
       <Filter>Classes\Actor\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Role.h">
+      <Filter>Classes\Actor\Role</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\RoleStateAttack.h">
+      <Filter>Classes\Actor\Role</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\RoleStateClimb.h">
+      <Filter>Classes\Actor\Role</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\RoleStateDead.h">
+      <Filter>Classes\Actor\Role</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\RoleStateIdle.h">
+      <Filter>Classes\Actor\Role</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\RoleStateMove.h">
+      <Filter>Classes\Actor\Role</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\RoleStatePreClimb.h">
+      <Filter>Classes\Actor\Role</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\RoleStateVictory.h">
+      <Filter>Classes\Actor\Role</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

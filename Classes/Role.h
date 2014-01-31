@@ -68,11 +68,6 @@ public:
     Role(ActorProperty* property, const cocos2d::Point& initialPosition, const std::string& direction);
     virtual ~Role();
     
-    cocos2d::Sprite* getRoleSprite()
-    {
-        return pRoleSprite_;
-    }
-    
     float getSpeedMove() const
     {
         return speedMove_;
@@ -161,8 +156,6 @@ private:
     ROLE_STATE mPrevState_;
     
     ActionArray actions_;
-    
-    cocos2d::Sprite* pRoleSprite_;
     float speedMove_;
     float speedClimb_;
     
