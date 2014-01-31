@@ -26,7 +26,7 @@ AIStateRevival::~AIStateRevival()
 
 void AIStateRevival::enter()
 {
-    pAI_->getAISprite()->setVisible(false);
+    pAI_->getActorSprite()->setVisible(false);
     pAI_->setCurrentRevivalDuration(0);
     pAI_->setAIStateCurrent(this);
 }
@@ -34,5 +34,5 @@ void AIStateRevival::enter()
 void AIStateRevival::exit()
 {
     pAI_->reset();
-    pAI_->getAISprite()->setVisible(true);
+    pAI_->getActorSprite()->setVisible(true);
 }

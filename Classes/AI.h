@@ -61,20 +61,13 @@ public:
     void init(const cocos2d::Point& initialPosition, const std::string& direction, int logic);
     void update(float delta);
     bool changeState(AI_STATE state);
+	bool isAttacked(const cocos2d::Rect& attackRect);
+
+	virtual bool canBeAttack();
     
 public:
     AI(ActorProperty* property, const cocos2d::Point& initialPosition, const std::string& direction, float speed, float idleDuration, float moveDistance, float initialDuration, float revivalDuration, bool guard, int logic, bool bossMove, bool canBeAttack);
     virtual ~AI();
-    
-    cocos2d::Sprite* getAISprite()
-    {
-        return pAISprite_;
-    }
-    
-    float getSpeedMove() const
-    {
-        return speedMove_;
-    }
     
     cocos2d::Rect getBodyRect()
     {
@@ -100,18 +93,13 @@ public:
     
     cocos2d::Rect getAttackRect();
     
-    bool canBeAttack() const
-    {
-        return canBeAttack_;
-    }
-    
 public:
     void switchDirection(Direction direction);
     void doAutoLogic(float delta);
     
 private:
     
-    CC_SYNTHESIZE(float, speedMove_, Speed);
+    CC_SYNTHESIZE(float, speedMove_, SpeedMove);
     CC_SYNTHESIZE(float, idleDuration_, IdleDuration);
     CC_SYNTHESIZE(float, autoMoveDistance_, MoveDistance);
     CC_SYNTHESIZE(float, initialDuration_, InitialDuration);
@@ -134,20 +122,12 @@ private:
     
     ActionArray actions_;
     
-    cocos2d::Sprite* pAISprite_;
-    
-//    float currentInitialDuration_;
     CC_SYNTHESIZE(float, currentInitialDuration_, CurrentInitialDuration);
     bool autoLogic_;
     ActorProperty* property_;
-    
-//    cocos2d::Point initialPosition_;
     CC_SYNTHESIZE(cocos2d::Point, initialPosition_, InitialPosition);
-//    cocos2d::Point autoMoveEndPosition_;
     CC_SYNTHESIZE(cocos2d::Point, autoMoveEndPosition_, AutoMoveEndPosition);
-//    cocos2d::Point currentTargetPosition_;
     CC_SYNTHESIZE(cocos2d::Point, currentTargetPosition_, CurrentTargetPosition);
-//    float totalRevivalDuration_;
     CC_SYNTHESIZE(float, totalRevivalDuration_, TotalRevivalDuration);
     
     bool canBeAttack_;

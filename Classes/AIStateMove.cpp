@@ -28,7 +28,7 @@ void AIStateMove::enter()
 {
     pAI_->getAIStateCurrent()->exit();
     pAI_->setCurrentMoveDistance(0);
-    pAI_->getAISprite()->runAction(pAI_->getActions().at(AI::ACTION_MOVE));
+    pAI_->getActorSprite()->runAction(pAI_->getActions().at(AI::ACTION_MOVE));
     pAI_->setAIStateCurrent(this);
 }
 

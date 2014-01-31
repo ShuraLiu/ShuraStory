@@ -30,7 +30,6 @@ AI::AI(ActorProperty* property, const cocos2d::Point& initialPosition, const std
 , pAIStateInitial_(new AIStateInitial(this))
 , pAIStateRevival_(new AIStateRevival(this))
 , pAIStateCurrent_(0)
-, pAISprite_(0)
 , speedMove_(speed)
 , idleDuration_(idleDuration)
 , autoMoveDistance_(moveDistance)
@@ -61,7 +60,6 @@ AI::~AI()
     delete pAIStateRevival_;
     delete pAutoLogic_;
     
-    CC_SAFE_RELEASE_NULL(pAISprite_);
     ActionArray::iterator it = actions_.begin();
     ActionArray::iterator end = actions_.end();
     for (; it != end; ++it)
@@ -83,10 +81,8 @@ void AI::init(const cocos2d::Point& initialPosition, const std::string& directio
         default:
             break;
     }
-    pAISprite_ = Sprite::create();
-    pAISprite_->setAnchorPoint(Point::ZERO);
+    getActorSprite()->setAnchorPoint(Point::ZERO);
     setPosition(initialPosition);
-    CC_SAFE_RETAIN(pAISprite_);
     
     actions_.resize(ACTION_COUNT, 0);
     RepeatForever* move = RepeatForever::create(Animate::create(AnimationCache::getInstance()->getAnimation(property_->action_move.c_str())));
@@ -113,7 +109,7 @@ void AI::init(const cocos2d::Point& initialPosition, const std::string& directio
     }
     initialDirection_ = direction_;
     
-    initialPosition_ = pAISprite_->getPosition();
+    initialPosition_ = getActorSprite()->getPosition();
     float x = (direction_ == LEFT) ? (initialPosition_.x + autoMoveDistance_) : (initialPosition_.x - autoMoveDistance_);
     float y = initialPosition_.y;
     autoMoveEndPosition_ = Point(x, y);
@@ -121,7 +117,7 @@ void AI::init(const cocos2d::Point& initialPosition, const std::string& directio
     
     if (0 != std::strcmp(direction.c_str(), property_->direction.c_str()))
     {
-        pAISprite_->setFlippedX(true);
+        getActorSprite()->setFlippedX(true);
     }
     
     if (changeState(AI_STATE_INITIAL))
@@ -138,6 +134,7 @@ void AI::update(float delta)
 
 void AI::doAutoLogic(float delta)
 {
+	Sprite* pAISprite = getActorSprite();
     switch (mState_) {
         case AI_STATE_INITIAL:
         {
@@ -164,24 +161,24 @@ void AI::doAutoLogic(float delta)
             break;
         case AI_STATE_MOVE:
         {
-            float currentX = pAISprite_->getPositionX();
+            float currentX = pAISprite->getPositionX();
             float addDistance = delta * speedMove_;
             currentMoveDistance_ += addDistance;
             if (utils::floatGreaterEuqalCompare(currentMoveDistance_, autoMoveDistance_))
             {
-                pAISprite_->setPositionX(currentTargetPosition_.x);
+                pAISprite->setPositionX(currentTargetPosition_.x);
                 stop();
             }
             else
             {
                 float nextX = currentX + addDistance * (direction_ == LEFT ? -1 : 1);
-                pAISprite_->setPositionX(nextX);
+                pAISprite->setPositionX(nextX);
             }
         }
             break;
         case AI_STATE_DEAD:
         {
-            if (!pAISprite_->getActionByTag(AI_ACTION_DEAD_TAG))
+            if (!pAISprite->getActionByTag(AI_ACTION_DEAD_TAG))
             {
                 waitForRevival();
             }
@@ -206,12 +203,12 @@ void AI::doAutoLogic(float delta)
 void AI::setPosition(const cocos2d::Point &pos)
 {
     Point position = Point(pos.x - property_->bodyRect.origin.x, pos.y - property_->bodyRect.origin.y);
-    pAISprite_->setPosition(position);
+    getActorSprite()->setPosition(position);
 }
 
 void AI::addAIToLayer(cocos2d::Layer *layer)
 {
-    layer->addChild(pAISprite_, ROLE_Z_ORDER - 1);
+    layer->addChild(getActorSprite(), ROLE_Z_ORDER - 1);
 }
 
 bool AI::changeState(AI_STATE state)
@@ -220,7 +217,7 @@ bool AI::changeState(AI_STATE state)
     {
         return  false;
     }
-    pAISprite_->stopAllActions();
+    getActorSprite()->stopAllActions();
     mPrevState_ = mState_;
     mState_ = state;
     return true;
@@ -261,22 +258,25 @@ void AI::dead()
 
 void AI::switchDirection(Actor::Direction direction)
 {
+	Sprite* pAISprite = getActorSprite();
     if (direction_ != direction)
     {
         direction_ = direction;
-        pAISprite_->setFlippedX(!pAISprite_->isFlippedX());
+        pAISprite->setFlippedX(!pAISprite->isFlippedX());
     }
 }
 
 Rect AI::getAttackRect()
 {
+	Sprite* pAISprite = getActorSprite();
     Rect rect = direction_ == RIGHT ? property_->rightAttackRect : property_->leftAttackRect;
-    return Rect(pAISprite_->getPositionX() + rect.origin.x, pAISprite_->getPositionY() + rect.origin.y, rect.size.width, rect.size.height);
+    return Rect(pAISprite->getPositionX() + rect.origin.x, pAISprite->getPositionY() + rect.origin.y, rect.size.width, rect.size.height);
 }
 
 Rect AI::getCollisionBodyRect()
 {
-    return cocos2d::Rect(pAISprite_->getPositionX() + property_->bodyRect.origin.x, pAISprite_->getPositionY() + property_->bodyRect.origin.y, property_->bodyRect.size.width, property_->bodyRect.size.height);
+	Sprite* pAISprite = getActorSprite();
+    return cocos2d::Rect(pAISprite->getPositionX() + property_->bodyRect.origin.x, pAISprite->getPositionY() + property_->bodyRect.origin.y, property_->bodyRect.size.width, property_->bodyRect.size.height);
 }
 
 void AI::waitForRevival()
@@ -289,20 +289,21 @@ void AI::waitForRevival()
 
 void AI::reset()
 {
+	Sprite* pAISprite = getActorSprite();
     direction_ = initialDirection_;
     currentTargetPosition_ = initialPosition_;
     
     if (0 == std::strcmp("left", property_->direction.c_str()))
     {
-        pAISprite_->setFlippedX(initialDirection_ == RIGHT);
+        pAISprite->setFlippedX(initialDirection_ == RIGHT);
     }
     else
     {
-        pAISprite_->setFlippedX(initialDirection_ == LEFT);
+        pAISprite->setFlippedX(initialDirection_ == LEFT);
     }
 
     currentTargetPosition_ = initialPosition_;
-    pAISprite_->setPosition(initialPosition_);
+    pAISprite->setPosition(initialPosition_);
 }
 
 void AI::deadByBomb()
@@ -315,5 +316,20 @@ void AI::move()
     pAIStateMove_->enter();
 }
 
+bool AI::isAttacked(const Rect& attackRect)
+{
+	if (mState_ == AI_STATE_DEAD || mState_ == AI_STATE_ATTACK || mState_ == AI_STATE_REVIVAL)
+	{
+		return false;
+	}
+	else
+	{
+		return attackRect.intersectsRect(getBodyRect());
+	}
+}
 
+bool AI::canBeAttack()
+{
+	return canBeAttack_;
+}
 

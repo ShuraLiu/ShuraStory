@@ -194,9 +194,7 @@ void GameLogic::dealCollsionRoleAndAI()
         for (int i = 0; i < aiArray.size(); ++i)
         {
             AI* pAI = aiArray.at(i);
-            if (pAI->canBeAttack()
-                && (pAI->getCurrentState() == AI_STATE_IDLE || pAI->getCurrentState() == AI_STATE_MOVE)
-                && checkCollision(pRole->getAttackRect(), pAI->getBodyRect()))
+            if (pAI->canBeAttack() && pAI->isAttacked(pRole->getAttackRect()))
             {
                 pAIToAttack = pAI;
             }

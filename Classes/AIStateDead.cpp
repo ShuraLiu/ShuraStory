@@ -30,7 +30,7 @@ void AIStateDead::enter()
 {
     SimpleAudioEngine::getInstance()->playEffect("effect_ai_dead.mp3");
     pAI_->getAIStateCurrent()->exit();
-    pAI_->getAISprite()->runAction(pAI_->getActions().at(AI::ACTION_DEAD));
+    pAI_->getActorSprite()->runAction(pAI_->getActions().at(AI::ACTION_DEAD));
     pAI_->setAIStateCurrent(this);
 }
 

@@ -7,11 +7,17 @@
     <Filter Include="Classes">
       <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
     </Filter>
+    <Filter Include="win">
+      <UniqueIdentifier>{af41b9ed-5206-4a59-b85d-8c496ee6fb04}</UniqueIdentifier>
+    </Filter>
     <Filter Include="resource">
       <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
     </Filter>
-    <Filter Include="win">
-      <UniqueIdentifier>{af41b9ed-5206-4a59-b85d-8c496ee6fb04}</UniqueIdentifier>
+    <Filter Include="Classes\Actor">
+      <UniqueIdentifier>{0b4e3748-4408-493d-bbbe-ed4d47201b8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Actor\AI">
+      <UniqueIdentifier>{94106016-7924-45a6-9640-a5c6417c139b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -22,42 +28,6 @@
       <Filter>Classes</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\HelloWorldScene.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Actor.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\ActorFactory.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\ActorProperty.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\AI.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\AIAutoLogic.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\AIAutoLogic0.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\AIStateAttack.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\AIStateDead.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\AIStateIdle.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\AIStateInitial.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\AIStateMove.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\AIStateRevival.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\BaseState.cpp">
@@ -192,6 +162,42 @@
     <ClCompile Include="..\win\DeviceResolutionWin32.cpp">
       <Filter>win</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Actor.cpp">
+      <Filter>Classes\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ActorFactory.cpp">
+      <Filter>Classes\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ActorProperty.cpp">
+      <Filter>Classes\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AI.cpp">
+      <Filter>Classes\Actor\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AIAutoLogic.cpp">
+      <Filter>Classes\Actor\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AIAutoLogic0.cpp">
+      <Filter>Classes\Actor\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AIStateAttack.cpp">
+      <Filter>Classes\Actor\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AIStateDead.cpp">
+      <Filter>Classes\Actor\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AIStateIdle.cpp">
+      <Filter>Classes\Actor\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AIStateInitial.cpp">
+      <Filter>Classes\Actor\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AIStateMove.cpp">
+      <Filter>Classes\Actor\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AIStateRevival.cpp">
+      <Filter>Classes\Actor\AI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -201,42 +207,6 @@
       <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\HelloWorldScene.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Actor.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\ActorFactory.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\ActorProperty.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\AI.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\AIAutoLogic.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\AIAutoLogic0.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\AIStateAttack.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\AIStateDead.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\AIStateIdle.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\AIStateInitial.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\AIStateMove.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\AIStateRevival.h">
       <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\BaseState.h">
@@ -370,6 +340,42 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Wall.h">
       <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Actor.h">
+      <Filter>Classes\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ActorProperty.h">
+      <Filter>Classes\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ActorFactory.h">
+      <Filter>Classes\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AI.h">
+      <Filter>Classes\Actor\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AIAutoLogic.h">
+      <Filter>Classes\Actor\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AIAutoLogic0.h">
+      <Filter>Classes\Actor\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AIStateAttack.h">
+      <Filter>Classes\Actor\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AIStateDead.h">
+      <Filter>Classes\Actor\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AIStateIdle.h">
+      <Filter>Classes\Actor\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AIStateInitial.h">
+      <Filter>Classes\Actor\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AIStateMove.h">
+      <Filter>Classes\Actor\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AIStateRevival.h">
+      <Filter>Classes\Actor\AI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -10,21 +10,27 @@
 #define __ShuraStory__Actor__
 
 #include "cocos2d.h"
+
 class Actor
 {
 public:
     enum Direction
     {
+		NONE,
         LEFT,
-        RIGHT
+        RIGHT,
+		UP,
+		DOWN,
     };
 public:
-    Actor(){};
-    virtual ~Actor(){};
+    Actor();
+    virtual ~Actor();
+
+	virtual bool canBeAttack(){ return false; }
     
     CC_SYNTHESIZE(Direction, direction_, Direction);
+	CC_SYNTHESIZE_RETAIN(cocos2d::Sprite*, actorSprite_, ActorSprite);
 protected:
-//    Direction direction_;
     Direction initialDirection_;
 };
 

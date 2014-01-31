@@ -49,24 +49,24 @@ void AIAutoLogic0::doAutoLogic(float delta)
             break;
         case AI_STATE_MOVE:
         {
-            float currentX = pAI_->getAISprite()->getPositionX();
+            float currentX = pAI_->getActorSprite()->getPositionX();
             float addDistance = delta * pAI_->getSpeedMove();
             pAI_->setCurrentMoveDistance(pAI_->getCurrentMoveDistance() +addDistance);
             if (utils::floatGreaterEuqalCompare(pAI_->getCurrentMoveDistance(), pAI_->getMoveDistance()))
             {
-                pAI_->getAISprite()->setPositionX(pAI_->getCurrentTargetPosition().x);
+                pAI_->getActorSprite()->setPositionX(pAI_->getCurrentTargetPosition().x);
                 pAI_->stop();
             }
             else
             {
                 float nextX = currentX + addDistance * (pAI_->getDirection() == AI::LEFT ? -1 : 1);
-                pAI_->getAISprite()->setPositionX(nextX);
+                pAI_->getActorSprite()->setPositionX(nextX);
             }
         }
             break;
         case AI_STATE_DEAD:
         {
-            if (!pAI_->getAISprite()->getActionByTag(AI_ACTION_DEAD_TAG))
+            if (!pAI_->getActorSprite()->getActionByTag(AI_ACTION_DEAD_TAG))
             {
                 pAI_->waitForRevival();
             }

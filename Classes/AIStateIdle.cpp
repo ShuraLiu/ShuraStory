@@ -28,7 +28,7 @@ void AIStateIdle::enter()
 {
     pAI_->getAIStateCurrent()->exit();
     pAI_->setCurrentIdleDuration(0);
-    pAI_->getAISprite()->runAction(pAI_->getActions().at(AI::ACTION_IDLE));
+    pAI_->getActorSprite()->runAction(pAI_->getActions().at(AI::ACTION_IDLE));
     pAI_->setAIStateCurrent(this);
 }
 

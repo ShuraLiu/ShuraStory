@@ -7,3 +7,15 @@
 //
 
 #include "Actor.h"
+
+Actor::Actor()
+: actorSprite_(cocos2d::Sprite::create())
+, direction_(NONE)
+{
+	CC_SAFE_RETAIN(actorSprite_);
+}
+
+Actor::~Actor()
+{
+	CC_SAFE_RELEASE_NULL(actorSprite_);
+}

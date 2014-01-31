@@ -27,7 +27,7 @@ AIStateAttack::~AIStateAttack()
 void AIStateAttack::enter()
 {
     pAI_->getAIStateCurrent()->exit();
-    pAI_->getAISprite()->runAction(pAI_->getActions().at(AI::ACTION_ATTACK));
+    pAI_->getActorSprite()->runAction(pAI_->getActions().at(AI::ACTION_ATTACK));
     pAI_->setAIStateCurrent(this);
 }
 
